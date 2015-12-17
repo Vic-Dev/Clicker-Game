@@ -1,0 +1,34 @@
+#main-container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#header {
+
+}
+
+.col-left {
+	width: 33.33333333%;
+	float: left;
+}
+
+.col-middle {
+	width: 33.33333333%;
+	float: left;
+	text-align: center;
+}
+
+.col-right {
+	width: 33.33333333%;
+	float: right;
+	text-align: right;
+}
+
+.remove-margin {
+	margin: 0;
+}
+
+.clear-float {
+	clear: both;
+}
+
