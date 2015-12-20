@@ -1,27 +1,30 @@
-var scoreElement = document.getElementById("score-num")
+var scoreElement = document.getElementById("score-num");
 var scoreNum = 0;
 var strongFinger = 0;
-var currentScore = 0;
+var autoClicker = [];
+var MAXAUTOCLICKER = 10;
 
 function newGame() {
 	scoreNum = 0;
-	scoreElement.innerHTML = "0";
-	currentScore = 0;
+	scoreElement.innerHTML = scoreNum;
 	strongFinger = 0;
+	for (var i = 0; i < autoClicker.length; i++) {
+		window.clearInterval(autoClicker[i]);
+	}
+	autoClicker = [];
 }
 
 function clickMe() {
-	scoreNum = scoreNum + 1 + strongFinger;
-	scoreElement.innerHTML = currentScore + scoreNum;
+	scoreNum += 1 + strongFinger;
+	scoreElement.innerHTML = scoreNum;
 }
 
 function buyStrongFinger() {
-	if (scoreElement.innerHTML >= 10) {
-		scoreNum = 0;
-		scoreElement.innerHTML = scoreElement.innerHTML - 10;
-		currentScore = Number(scoreElement.innerHTML);
+	if (scoreNum >= 10) {
+		scoreNum -= 10;
+		scoreElement.innerHTML = scoreNum;
 		strongFinger = 1;
-	};
+	}
 }
 
 function infoStrongFinger() {
@@ -29,7 +32,16 @@ function infoStrongFinger() {
 }
 
 function buyAutoClicker() {
-	alert("you clicked buy for auto clicker");
+	if (scoreNum >= 10 && autoClicker.length < MAXAUTOCLICKER) {
+		scoreNum -= 10;
+		scoreElement.innerHTML = scoreNum;
+		autoClicker.push(window.setInterval(autoClickerFunc, 1000));
+	}
+}
+
+function autoClickerFunc() {
+	scoreNum++;
+	scoreElement.innerHTML = scoreNum;
 }
 
 function infoAutoClicker() {
