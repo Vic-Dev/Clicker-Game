@@ -3,6 +3,7 @@ var scoreNum = 0;
 var strongFinger = 0;
 var autoClicker = [];
 var MAXAUTOCLICKER = 10;
+var autoClickerLevelElement = document.getElementById("auto-clicker-level");
 
 function newGame() {
 	scoreNum = 0;
@@ -12,6 +13,7 @@ function newGame() {
 		window.clearInterval(autoClicker[i]);
 	}
 	autoClicker = [];
+	autoClickerLevelElement.innerHTML = 1;
 }
 
 function clickMe() {
@@ -36,6 +38,7 @@ function buyAutoClicker() {
 		scoreNum -= 10;
 		scoreElement.innerHTML = scoreNum;
 		autoClicker.push(window.setInterval(autoClickerFunc, 1000));
+		autoClickerLevelElement.innerHTML = autoClicker.length + 1;
 	}
 }
 
