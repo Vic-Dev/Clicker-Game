@@ -36,33 +36,51 @@
 				<button class="click-me-button" onclick="clickMe()">Click Me</button>
 			</div>
 		</div>
-		<table class="col-right">
-			<tr>
-				<th colspan="2" class="items">Items</th>
-			</tr>
-			<tr class="text-left-align">
-				<td class="items-buttons">
-					<div>
-						<button class="item-button" onclick="buyStrongFinger()">buy</button>
-					</div>
-					<div>
-						<button class="item-button" onclick="infoStrongFinger()">info</button>
-					</div>
-				</td>
-				<td class="items-names">Strong Finger</td>
-			</tr>
-			<tr class="text-left-align">
-				<td class="items-buttons">
-					<div>
-						<button class="item-button" onclick="buyAutoClicker()">buy</button>
-					</div>
-					<div>
-						<button class="item-button" onclick="infoAutoClicker()">info</button>
-					</div>
-				</td>
-				<td class="items-names">Auto Clicker Level <span id="auto-clicker-level">1</span></td>
-			</tr>
-		</table>
+		<div class="col-right">
+			<table class="table-width">
+				<tbody>
+					<tr>
+						<th colspan="2" class="items">Items</th>
+					</tr>
+					<tr>
+						<td class="items-buttons">
+							<div>
+								<button class="item-button" onclick="buyStrongFinger()">buy</button>
+							</div>
+							<div>
+								<button class="item-button" onclick="infoStrongFinger()">info</button>
+							</div>
+						</td>
+						<td class="items-names"> 
+							<div>
+								Strong Finger Next Level: <span id="next-strong-finger-level">1</span>
+							</div>
+							<div>
+								(Current Level: <span id="current-strong-finger-level">0</span>)
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="items-buttons">
+							<div>
+								<button class="item-button" onclick="buyAutoClicker()">buy</button>
+							</div>
+							<div>
+								<button class="item-button" onclick="infoAutoClicker()">info</button>
+							</div>
+						</td>
+						<td class="items-names">
+							<div>
+								Auto Clicker Next Level: <span id="next-auto-clicker-level">1</span>
+							</div>
+							<div>
+								(Current Level: <span id="current-auto-clicker-level">0</span>)
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" language="javascript" src="crappy-clicker.js"></script>

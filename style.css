@@ -159,10 +159,19 @@
 	background: #1b435e;
 }
 
-.items-buttons {
+.table-width {
 	width: 1%;
 }
 
 .items-names {
+	width: 1%;
+	text-align: center;
+	white-space: nowrap;
 	padding-left: 10px;
+}
+
+
+.items-buttons {
+	width: 1%;
+	text-align: center;
 }
