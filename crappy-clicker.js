@@ -16,7 +16,6 @@ var currentAutoClickerLevelElement = document.getElementById("current-auto-click
 
 function newGame() {
 	scoreNum = 0;
-	scoreElement.innerHTML = scoreNum;
 	strongFinger = 0;
 	for (var i = 0; i < autoClicker.length; i++) {
 		window.clearInterval(autoClicker[i]);
@@ -30,23 +29,24 @@ function newGame() {
 	strongFingerNextLevel = 0;
 	autoClickerLevel = 0;
 	autoClickerNextLevel = 0;
+	updateDisplay();
 }
 
 function clickMe() {
 	scoreNum += 1 + strongFinger;
-	scoreElement.innerHTML = scoreNum;
+	updateDisplay();
 }
 
 function buyStrongFinger() {
 	if (scoreNum >= 10) {
 		scoreNum -= 10;
-		scoreElement.innerHTML = scoreNum;
 		strongFinger = 1;
 		strongFingerLevel++;
 		strongFingerNextLevel = strongFingerLevel + 1;
 		strongFingerLevelElement.innerHTML = strongFingerNextLevel;
 		currentStrongFingerLevelElement.innerHTML = strongFingerLevel;
 	}
+	updateDisplay();
 }
 
 function infoStrongFinger() {
@@ -58,22 +58,26 @@ function infoStrongFinger() {
 function buyAutoClicker() {
 	if (scoreNum >= 10 && autoClicker.length < MAXAUTOCLICKER) {
 		scoreNum -= 10;
-		scoreElement.innerHTML = scoreNum;
 		autoClicker.push(window.setInterval(autoClickerFunc, 1000));
 		autoClickerLevel = autoClicker.length
 		autoClickerNextLevel = autoClickerLevel + 1
 		autoClickerLevelElement.innerHTML = autoClickerNextLevel;
 		currentAutoClickerLevelElement.innerHTML = autoClickerLevel;
 	}
+	updateDisplay();
 }
 
 function autoClickerFunc() {
 	scoreNum++;
-	scoreElement.innerHTML = scoreNum;
+	updateDisplay();
 }
 
 function infoAutoClicker() {
 	autoClickerNextLevel = autoClickerLevel + 1;
 	infoAutoClickerText = "Increase your score AUTOMAGICALLY!! Current Level " + autoClickerLevel + ", Next Level " + autoClickerNextLevel;
 	alert(infoAutoClickerText);
+}
+
+function updateDisplay() {
+	scoreElement.innerHTML = scoreNum;
 }
