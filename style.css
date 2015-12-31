@@ -170,11 +170,21 @@
 	width: 1%;
 	text-align: center;
 	white-space: nowrap;
-	padding-left: 10px;
+	padding-left: 20px;
 }
 
 
 .items-buttons {
 	width: 1%;
 	text-align: center;
+}
+
+.items-cost {
+	width: 1%;
+	padding-left: 10px;
+	white-space: nowrap;
+}
+
+.items-next-level {
+	text-align: left;
 }
