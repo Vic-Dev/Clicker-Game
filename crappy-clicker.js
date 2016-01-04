@@ -26,22 +26,10 @@ var autoClickerBuyShow = "none";
 function newGame() {
 	scoreNum = 0;
 	clearInterval(autoClicker);
-	nextAutoClickerLevelElement.innerHTML = 1;
-	nextStrongFingerLevelElement.innerHTML = 1;
-	currentStrongFingerLevelElement.innerHTML = 0;
-	currentAutoClickerLevelElement.innerHTML = 0;
 	strongFingerLevel = 0;
 	autoClickerLevel = 0;
-	currentStrongFingerAmtElement.innerHTML = 1;
-	nextStrongFingerAmtElement.innerHTML = 2;
-	currentAutoClickerAmtElement.innerHTML = "";
-	nextAutoClickerAmtElement.innerHTML = 0.1;
-	strongFingerCostElement.innerHTML = 10;
-	autoClickerCostElement.innerHTML = 10;
 	strongFingerCost = 10;
 	autoClickerCost = 10;
-	strongFingerBuyElement.style.visibility = "hidden";
-	autoClickerBuyElement.style.visibility = "hidden";
 }
 
 function clickMe() {
@@ -53,11 +41,6 @@ function buyStrongFinger() {
 		scoreNum -= strongFingerCost;
 		strongFingerLevel++;
 		strongFingerCost += strongFingerLevel * 30;
-		nextStrongFingerLevelElement.innerHTML = strongFingerLevel + 1;
-		currentStrongFingerLevelElement.innerHTML = strongFingerLevel;
-		nextStrongFingerAmtElement.innerHTML = strongFingerLevel + 2;
-		currentStrongFingerAmtElement.innerHTML = strongFingerLevel + 1;
-		strongFingerCostElement.innerHTML = strongFingerCost;
 	}
 }
 
@@ -73,11 +56,6 @@ function buyAutoClicker() {
 		autoClicker = setInterval(autoClickerFunc, 1000);
 		autoClickerLevel++;
 		autoClickerCost += autoClickerLevel * 40;
-		nextAutoClickerLevelElement.innerHTML = autoClickerLevel + 1;
-		currentAutoClickerLevelElement.innerHTML = autoClickerLevel;
-		currentAutoClickerAmtElement.innerHTML = " -- " + (0.1 * autoClickerLevel).toFixed(1) + " clicks per sec";
-		nextAutoClickerAmtElement.innerHTML = ((0.1 * autoClickerLevel) + 0.1).toFixed(1);
-		autoClickerCostElement.innerHTML = autoClickerCost;
 	}
 }
 
@@ -105,6 +83,16 @@ function showItems() {
 
 function draw() {
 	scoreElement.innerHTML = scoreNum.toFixed(0);
+	nextStrongFingerLevelElement.innerHTML = strongFingerLevel + 1;
+	currentStrongFingerLevelElement.innerHTML = strongFingerLevel;
+	nextStrongFingerAmtElement.innerHTML = strongFingerLevel + 2;
+	currentStrongFingerAmtElement.innerHTML = strongFingerLevel + 1;
+	strongFingerCostElement.innerHTML = strongFingerCost;
+	nextAutoClickerLevelElement.innerHTML = autoClickerLevel + 1;
+	currentAutoClickerLevelElement.innerHTML = autoClickerLevel;
+	currentAutoClickerAmtElement.innerHTML = " -- " + (0.1 * autoClickerLevel).toFixed(1) + " clicks per sec";
+	nextAutoClickerAmtElement.innerHTML = ((0.1 * autoClickerLevel) + 0.1).toFixed(1);
+	autoClickerCostElement.innerHTML = autoClickerCost;
 	strongFingerBuyElement.style.visibility = strongFingerBuyShow
 	autoClickerBuyElement.style.visibility = autoClickerBuyShow
 }
