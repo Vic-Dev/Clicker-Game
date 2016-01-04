@@ -18,6 +18,10 @@ var strongFingerCostElement = document.getElementById("strong-finger-cost");
 var autoClickerCostElement = document.getElementById("auto-clicker-cost");
 var strongFingerCost = 10;
 var autoClickerCost = 10;
+var strongFingerBuyElement = document.getElementById("buy-strong-finger");
+var autoClickerBuyElement = document.getElementById("buy-auto-clicker");
+var strongFingerBuyShow = "none";
+var autoClickerBuyShow = "none";
 
 function newGame() {
 	scoreNum = 0;
@@ -36,6 +40,8 @@ function newGame() {
 	autoClickerCostElement.innerHTML = 10;
 	strongFingerCost = 10;
 	autoClickerCost = 10;
+	strongFingerBuyElement.style.visibility = "hidden";
+	autoClickerBuyElement.style.visibility = "hidden";
 }
 
 function clickMe() {
@@ -84,11 +90,27 @@ function infoAutoClicker() {
 	alert(infoAutoClickerText);
 }
 
+function showItems() {
+	if (scoreNum >= strongFingerCost) {
+		strongFingerBuyShow = "visible";
+	} else {
+		strongFingerBuyShow = "hidden";
+	}
+	if (scoreNum >= autoClickerCost && autoClickerLevel < MAXAUTOCLICKER) {
+		autoClickerBuyShow = "visible";
+	} else {
+		autoClickerBuyShow = "hidden";
+	}
+}
+
 function draw() {
 	scoreElement.innerHTML = scoreNum.toFixed(0);
+	strongFingerBuyElement.style.visibility = strongFingerBuyShow
+	autoClickerBuyElement.style.visibility = autoClickerBuyShow
 }
 
 function main() {
+	showItems();
 	draw();
 	requestAnimationFrame(main);
 }
