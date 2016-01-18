@@ -46,6 +46,7 @@ function saveGame() {
  	localStorage.setItem('scoreNum', JSON.stringify(scoreNum));
  	localStorage.setItem('strongFingerLevel', JSON.stringify(strongFingerLevel));
  	localStorage.setItem('autoClickerLevel', JSON.stringify(autoClickerLevel));
+ 	localStorage.setItem('strongFingerCost', JSON.stringify(strongFingerCost));
  	localStorage.setItem('autoClickerCost', JSON.stringify(autoClickerCost));
  	localStorage.setItem('totalScore', JSON.stringify(totalScore));
 }
@@ -54,6 +55,7 @@ function loadGame() {
 	scoreNum = JSON.parse(localStorage.getItem('scoreNum'));
 	strongFingerLevel = JSON.parse(localStorage.getItem('strongFingerLevel'));
 	autoClickerLevel = JSON.parse(localStorage.getItem('autoClickerLevel'));
+	strongFingerCost = JSON.parse(localStorage.getItem('strongFingerCost'));
 	autoClickerCost = JSON.parse(localStorage.getItem('autoClickerCost'));
 	totalScore = JSON.parse(localStorage.getItem('totalScore'));	
 }
