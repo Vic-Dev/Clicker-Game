@@ -26,8 +26,10 @@ var progressTextElement = document.getElementById("progress-text");
 var progressText = "";
 var totalScore = 0;
 
-if (JSON.parse(localStorage.getItem('totalScore')) !== "undefined" && JSON.parse(localStorage.getItem('totalScore')) !== "null") {
+if (JSON.parse(localStorage.getItem('totalScore')) !== "undefined" || JSON.parse(localStorage.getItem('totalScore')) !== "null") {
 	loadGame();
+} else {
+	newGame();
 }
 
 function newGame() {
