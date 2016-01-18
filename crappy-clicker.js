@@ -22,6 +22,13 @@ var strongFingerBuyElement = document.getElementById("buy-strong-finger");
 var autoClickerBuyElement = document.getElementById("buy-auto-clicker");
 var strongFingerBuyShow = "none";
 var autoClickerBuyShow = "none";
+var progressTextElement = document.getElementById("progress-text");
+var progressText = "";
+var totalScore = 0;
+
+if (JSON.parse(localStorage.getItem('totalScore')) !== "undefined") {
+	loadGame();
+}
 
 function newGame() {
 	scoreNum = 0;
@@ -30,10 +37,28 @@ function newGame() {
 	autoClickerLevel = 0;
 	strongFingerCost = 10;
 	autoClickerCost = 10;
+	totalScore = 0;
+}
+
+function saveGame() {
+ 	localStorage.setItem('scoreNum', JSON.stringify(scoreNum));
+ 	localStorage.setItem('strongFingerLevel', JSON.stringify(strongFingerLevel));
+ 	localStorage.setItem('autoClickerLevel', JSON.stringify(autoClickerLevel));
+ 	localStorage.setItem('autoClickerCost', JSON.stringify(autoClickerCost));
+ 	localStorage.setItem('totalScore', JSON.stringify(totalScore));
+}
+
+function loadGame() {
+	scoreNum = JSON.parse(localStorage.getItem('scoreNum'));
+	strongFingerLevel = JSON.parse(localStorage.getItem('strongFingerLevel'));
+	autoClickerLevel = JSON.parse(localStorage.getItem('autoClickerLevel'));
+	autoClickerCost = JSON.parse(localStorage.getItem('autoClickerCost'));
+	totalScore = JSON.parse(localStorage.getItem('totalScore'));	
 }
 
 function clickMe() {
 	scoreNum += 1 + strongFingerLevel;
+	totalScore += 1 + strongFingerLevel;
 }
 
 function buyStrongFinger() {
@@ -61,6 +86,7 @@ function buyAutoClicker() {
 
 function autoClickerFunc() {
 	scoreNum += 0.1 * autoClickerLevel;
+	totalScore += 0.1 * autoClickerLevel;
 }
 
 function infoAutoClicker() {
@@ -81,6 +107,16 @@ function showItems() {
 	}
 }
 
+function updateProgressText() {
+	if (totalScore < 10) {
+		progressText = "";
+	} else if (totalScore >= 10 && totalScore < 20) {
+		progressText = "You're a clicking CHAPION!";
+	} else if (totalScore >= 20) {
+		progressText = "You're a clicking MONSTR!!!";
+	}
+}
+
 function draw() {
 	scoreElement.innerHTML = scoreNum.toFixed(0);
 	nextStrongFingerLevelElement.innerHTML = strongFingerLevel + 1;
@@ -93,14 +129,17 @@ function draw() {
 	currentAutoClickerAmtElement.innerHTML = " -- " + (0.1 * autoClickerLevel).toFixed(1) + " clicks per sec";
 	nextAutoClickerAmtElement.innerHTML = ((0.1 * autoClickerLevel) + 0.1).toFixed(1);
 	autoClickerCostElement.innerHTML = autoClickerCost;
-	strongFingerBuyElement.style.visibility = strongFingerBuyShow
-	autoClickerBuyElement.style.visibility = autoClickerBuyShow
+	strongFingerBuyElement.style.visibility = strongFingerBuyShow;
+	autoClickerBuyElement.style.visibility = autoClickerBuyShow;
+	progressTextElement.innerHTML = progressText;
 }
 
 function main() {
 	showItems();
+	updateProgressText();
 	draw();
 	requestAnimationFrame(main);
+	saveGame();
 }
 
 main();
